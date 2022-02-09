@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+export default function App() {
+
+  const [color, setColor] = useState("coral")
+  const updateColor = (text) => { 
+
+    if (text.target.value == ""){
+      setColor(color);
+    }else{
+    setColor(text.target.value);
+    console.log(text.target.value)
+  }
 }
 
-export default App;
+  return (
+    <div className="App">
+        <h1>Color Input</h1>
+        <div style={{backgroundColor: color}} className="box"/>
+          <input placeholder=' Type in a color!' onChange={(color) => updateColor(color)}/>
+           <a href="https://www.w3schools.com/colors/colors_names.asp">List of predefined CSS colors</a> 
+      </div>
+  );
+  }
